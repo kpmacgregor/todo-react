@@ -17,7 +17,6 @@ class TodoApp extends React.Component {
     e.preventDefault();
     const value = e.target.querySelector('input').value;
     this.setState({ todoList: [...this.state.todoList, value] });
-    console.log(this.state.todoList);
   }
 
   render() {
