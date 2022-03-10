@@ -2,23 +2,36 @@ import React from 'react';
 import TodoInput from './TodoInput';
 import "./App.css";
 
-function App() {
-  function handleSubmit(e) {
+class TodoApp extends React.Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      todoList: [],
+      completedList: [],
+    }
+  }
+  
+  handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
+    const value = e.target.querySelector('input').value;
+    this.setState({ todoList: [...this.state.todoList, value] });
+    console.log(this.state.todoList);
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>tasks</h1>
-      </header>
-      <TodoInput onSubmit={handleSubmit} />
-      {/* <TodoList />
+  render() {
+   return (
+      <div className="App">
+        <header className="App-header">
+          <h1>tasks</h1>
+        </header>
+        <TodoInput onSubmit={this.handleSubmit} />
+        {/* <TodoList />
       <TodoCompletedList />
       <TodoFooter /> */}
-    </div>
-  );
+      </div>
+    )
+  };
 }
 
-export default App;
+export default TodoApp;
