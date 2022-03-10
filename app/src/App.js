@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoInput from './TodoInput';
+import TodoList from './TodoList';
 import "./App.css";
 
 class TodoApp extends React.Component {
@@ -26,8 +27,8 @@ class TodoApp extends React.Component {
           <h1>tasks</h1>
         </header>
         <TodoInput onSubmit={this.handleSubmit} />
-        {/* <TodoList />
-      <TodoCompletedList />
+       <TodoList todoList={this.state.todoList} />
+      {/*<TodoCompletedList />
       <TodoFooter /> */}
       </div>
     )
