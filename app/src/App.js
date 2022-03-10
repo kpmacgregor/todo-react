@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import React from 'react';
 import "./App.css";
 
 function App() {
@@ -7,6 +7,10 @@ function App() {
       <header className="App-header">
         <h1>tasks</h1>
       </header>
+      <TodoInput />
+      <TodoList />
+      <TodoCompletedList />
+      <TodoFooter />
     </div>
   );
 }
