@@ -1,4 +1,5 @@
 import React from "react";
+import TodoCompletedListItem from "./TodoCompletedListItem";
 
 function TodoCompletedList(props) {
     return (
@@ -9,3 +10,5 @@ function TodoCompletedList(props) {
         </ul>
     );
 }
+
+export default TodoCompletedList;

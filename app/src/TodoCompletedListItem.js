@@ -4,3 +4,5 @@ function TodoCompletedListItem(props) {
     const _props = Object.assign({}, props, { completed: true });
     return TodoListItem(_props);
 }
+
+export default TodoCompletedListItem;
