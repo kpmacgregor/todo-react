@@ -2,7 +2,7 @@ import React from "react";
 
 function TodoListItem(props) {
     return (
-        <li>
+        <li className={props.completed ? 'completed' : 'not-completed'}>
             <input type="checkbox" id={props.id}></input>
             <label htmlFor={props.id}>{props.value}</label>
             <button type="button">-</button>
