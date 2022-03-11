@@ -1,7 +1,7 @@
 import React from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
-import TodoCompletedList from "./TodoCompletedList";
+// import TodoCompletedList from "./TodoCompletedList";
 
 import "./App.css";
 
@@ -16,6 +16,10 @@ class TodoApp extends React.Component {
     };
   }
 
+  componentDidUpdate(props, state) {
+    console.log(props);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const task = {
@@ -28,9 +32,14 @@ class TodoApp extends React.Component {
   }
 
   handleChecked(e) {
+    // console.log(e.target.props);
     // e.preventDefault();
     let sourceList = "todoList",
       destinationList = "completedList";
+
+    // e.target.checked is unreliable
+    // we need to access the completed prop
+    // to make this check
     if (!e.target.checked) {
       sourceList = "completedList";
       destinationList = "todoList";
@@ -68,7 +77,10 @@ class TodoApp extends React.Component {
           onChecked={this.handleChecked}
         />
         <hr />
-        {/* <TodoCompletedList completedList={this.state.completedList} /> */}
+        <TodoList
+          todoList={this.state.completedList}
+          onChecked={this.handleChecked}
+        />
       </div>
     );
   }
