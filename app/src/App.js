@@ -16,13 +16,15 @@ class TodoApp extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const input = e.target.querySelector("input");
     const task = {
       id: `task-list-id-${new Date().getTime()}`,
       completed: false,
-      text: e.target.querySelector("input").value,
+      text: input.value,
     };
 
     this.setState({ taskList: [...this.state.taskList, task] });
+    input.value = "";
   }
 
   handleChange(e) {
