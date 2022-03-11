@@ -1,27 +1,62 @@
+:root {
+  font-size: 24px;
+  --background-color-light-mode: #f8f2ee;
+  --text-color-light-mode: #333;
+  --text-color-secondary-light-mode: #777;
+  --font-family-default: monospace;
+  --font-size-header: 40px;
+  --margin-left-aligned: 2rem;
+  --width-main: 15rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  background-color: var(--background-color-light-mode);
+  color: var(--text-color-light-mode);
+  font-family: var(--font-family-default);
+  width: var(--width-main);
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 3em;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  font-size: var(--font-size-header);
+  font-weight: normal;
+  margin-left: var(--margin-left-aligned);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-add-form {
+  border: 1px solid red;
+  margin-left: var(--margin-left-aligned);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: calc(var(--width-main) - 2 * var(--margin-left-aligned));
+}
+
+.task-add-form * {
+  height: 1rem;
+  /* font-size: 1rem; */
+}
+
+.task-add-input {
+  flex-grow: 1;
+  /* font-size: 1rem; */
+  /* flex-shrink: 1; */
+}
+
+.task-add-button {
+  width: 1rem;
+  /* height: 1rem; */
+  align-self: flex-end;
 }

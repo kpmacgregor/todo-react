@@ -2,9 +2,11 @@ import React from "react";
 
 function TaskInput(props) {
   return (
-    <form onSubmit={props.onSubmit}>
-      <input type="text"></input>
-      <button type="submit">+</button>
+    <form className="task-add-form" onSubmit={props.onSubmit}>
+      <input className="task-add-input" type="text"></input>
+      <button className="task-add-button" type="submit">
+        +
+      </button>
     </form>
   );
 }
