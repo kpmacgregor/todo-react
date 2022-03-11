@@ -11,13 +11,8 @@ class TodoApp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
     this.state = {
-      todoList: [],
-      completedList: [],
+      taskList: [],
     };
-  }
-
-  componentDidUpdate(props, state) {
-    console.log(props);
   }
 
   handleSubmit(e) {
@@ -28,42 +23,20 @@ class TodoApp extends React.Component {
       text: e.target.querySelector("input").value,
     };
 
-    this.setState({ todoList: [...this.state.todoList, task] });
+    this.setState({ taskList: [...this.state.taskList, task] });
   }
 
   handleChecked(e) {
-    // console.log(e.target.props);
-    // e.preventDefault();
-    let sourceList = "todoList",
-      destinationList = "completedList";
-
-    // e.target.checked is unreliable
-    // we need to access the completed prop
-    // to make this check
-    if (!e.target.checked) {
-      sourceList = "completedList";
-      destinationList = "todoList";
-    }
-    const index = this.state[sourceList].findIndex((task) => {
-      return task.id === e.target.id;
-    });
-    const task = this.state[sourceList][index];
+    const _id = e.target.id;
+    const index = this.state.taskList.findIndex((task) => task.id === _id);
+    const task = { ...this.state.taskList[index] };
     task.completed = !task.completed;
-
-    const _sourceList = [...this.state[sourceList]];
-    _sourceList.splice(index, 1);
-    const _destinationList = [...this.state[destinationList], task];
-
-    this.setState((state) => {
-      const merge = {};
-      merge[sourceList] = _sourceList;
-      merge[destinationList] = _destinationList;
-      return merge;
+    const _taskList = [...this.state.taskList];
+    _taskList.splice(index, 1, task);
+    this.setState({
+      taskList: _taskList,
     });
-    // this.setState({ destinationList: _destinationList });
   }
-
-  handleUnchecked(e) {}
 
   render() {
     return (
@@ -73,12 +46,12 @@ class TodoApp extends React.Component {
         </header>
         <TodoInput onSubmit={this.handleSubmit} />
         <TodoList
-          todoList={this.state.todoList}
+          taskList={this.state.taskList.filter((task) => !task.completed)}
           onChecked={this.handleChecked}
         />
         <hr />
         <TodoList
-          todoList={this.state.completedList}
+          taskList={this.state.taskList.filter((task) => task.completed)}
           onChecked={this.handleChecked}
         />
       </div>
