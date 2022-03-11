@@ -1,16 +1,16 @@
 import React from "react";
-import TodoListItem from "./TodoListItem";
+import TaskListItem from "./TaskListItem";
 
-function TodoList(props) {
+function TaskList(props) {
   return (
     <ul className="taskList">
       {props.taskList.map((task) => {
         return (
-          <TodoListItem
+          <TaskListItem
             key={task.id}
             value={task.text}
             id={task.id}
-            onChecked={props.onChecked}
+            onChange={props.onChange}
             completed={task.completed}
           />
         );
@@ -19,4 +19,4 @@ function TodoList(props) {
   );
 }
 
-export default TodoList;
+export default TaskList;

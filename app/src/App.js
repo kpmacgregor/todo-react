@@ -1,7 +1,6 @@
 import React from "react";
-import TodoInput from "./TodoInput";
-import TodoList from "./TodoList";
-// import TodoCompletedList from "./TodoCompletedList";
+import TaskInput from "./TaskInput";
+import TaskList from "./TaskList";
 
 import "./App.css";
 
@@ -9,7 +8,7 @@ class TodoApp extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChecked = this.handleChecked.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       taskList: [],
     };
@@ -26,7 +25,7 @@ class TodoApp extends React.Component {
     this.setState({ taskList: [...this.state.taskList, task] });
   }
 
-  handleChecked(e) {
+  handleChange(e) {
     const _id = e.target.id;
     const index = this.state.taskList.findIndex((task) => task.id === _id);
     const task = { ...this.state.taskList[index] };
@@ -44,15 +43,15 @@ class TodoApp extends React.Component {
         <header className="App-header">
           <h1>tasks</h1>
         </header>
-        <TodoInput onSubmit={this.handleSubmit} />
-        <TodoList
+        <TaskInput onSubmit={this.handleSubmit} />
+        <TaskList
           taskList={this.state.taskList.filter((task) => !task.completed)}
-          onChecked={this.handleChecked}
+          onChange={this.handleChange}
         />
         <hr />
-        <TodoList
+        <TaskList
           taskList={this.state.taskList.filter((task) => task.completed)}
-          onChecked={this.handleChecked}
+          onChange={this.handleChange}
         />
       </div>
     );
