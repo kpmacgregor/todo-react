@@ -12,6 +12,7 @@ function TaskList(props) {
             id={task.id}
             onChange={props.onChange}
             completed={task.completed}
+            onDelete={props.onDelete}
           />
         );
       })}

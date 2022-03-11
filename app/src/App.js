@@ -9,6 +9,7 @@ class TodoApp extends React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       taskList: [],
     };
@@ -39,6 +40,16 @@ class TodoApp extends React.Component {
     });
   }
 
+  handleDelete(e) {
+    const _id = e.target.dataset.for;
+    const index = this.state.taskList.findIndex((task) => task.id === _id);
+    const _taskList = [...this.state.taskList];
+    _taskList.splice(index, 1);
+    this.setState({
+      taskList: _taskList,
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -49,11 +60,13 @@ class TodoApp extends React.Component {
         <TaskList
           taskList={this.state.taskList.filter((task) => !task.completed)}
           onChange={this.handleChange}
+          onDelete={this.handleDelete}
         />
         <hr />
         <TaskList
           taskList={this.state.taskList.filter((task) => task.completed)}
           onChange={this.handleChange}
+          onDelete={this.handleDelete}
         />
       </div>
     );

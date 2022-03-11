@@ -10,7 +10,9 @@ function TaskListItem(props) {
         checked={props.completed}
       ></input>
       <label htmlFor={props.id}>{props.value}</label>
-      <button type="button">-</button>
+      <button data-for={props.id} type="button" onClick={props.onDelete}>
+        -
+      </button>
     </li>
   );
 }
