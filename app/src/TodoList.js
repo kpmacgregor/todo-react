@@ -5,7 +5,10 @@ function TodoList(props) {
     return (
         <ul className="todoList">
             {props.todoList.map((task, index) => {
-                return <TodoListItem key={index} value={task} id={`todo-list-item-${index}`} />
+                return <TodoListItem key={task.id}
+                    value={task.text}
+                    id={task.id}
+                    onChecked={props.onChecked} />
             })}
         </ul>
     );
